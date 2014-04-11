@@ -1,0 +1,57 @@
+local tArgs = {...}
+ 
+if tArgs[1] == nil then
+	print("Usage: c <core numbers> <on|off>")
+	print("Cores ")
+	print("Example: c 0 on")
+	print("Example: c 03 on")
+	print("Example: c 123 on")
+        return
+end
+
+core = tArgs[1]
+power = tArgs[2]
+
+if string.find(core, "0") then
+	if power == "on" then
+		rs.setOutput("left", true)
+	end
+end
+if string.find(core, "0") then
+	if power == "off" then
+		rs.setOutput("left", false)
+	end
+end
+
+if string.find(core, "1") then
+	if power == "on" then
+		rs.setOutput("back", true)
+	end
+end
+if string.find(core, "1") then
+	if power == "off" then
+		rs.setOutput("back", false)
+	end
+end
+
+if string.find(core, "2") then
+	if power == "on" then
+		rs.setOutput("right", true)
+	end
+end
+if string.find(core, "2") then
+	if power == "off" then
+		rs.setOutput("right", false)
+	end
+end
+
+if string.find(core, "3") then
+	if power == "on" then
+		rs.setOutput("front", true)
+	end
+end
+if string.find(core, "3") then
+	if power == "off" then
+		rs.setOutput("front", false)
+	end
+end

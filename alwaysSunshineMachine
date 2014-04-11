@@ -1,0 +1,10 @@
+while true do
+  sleep(1)
+  local nTime = os.time()
+  f = textutils.formatTime( nTime, true )
+  if f == "18:15" then 
+    rs.setOutput("right", true)
+    sleep(0.1)
+    rs.setOutput("right", false)
+  end  
+end

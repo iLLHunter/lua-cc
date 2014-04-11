@@ -1,0 +1,21 @@
+local tArgs = {...}
+ 
+if #tArgs ~= 1 or tonumber(tArgs[1]) == nil or math.floor(tonumber(tArgs[1])) ~= tonumber(tArgs[1]) or tonumber(tArgs[1]) < 1 then
+        print("Usage: all <number of mintues to runall>")
+        return
+end
+
+minutes = tonumber(tArgs[1])
+seconds = minutes * 60
+
+rs.setOutput("front", true)
+rs.setOutput("back", true)
+rs.setOutput("left", true)
+rs.setOutput("right", true)
+
+sleep(seconds)
+
+rs.setOutput("front", false)
+rs.setOutput("back", false)
+rs.setOutput("left", false)
+rs.setOutput("right", false)

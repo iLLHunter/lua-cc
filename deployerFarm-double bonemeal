@@ -1,0 +1,21 @@
+local tArgs = {...}
+runs = tonumber(tArgs[1])
+count = 0
+while count <= runs do
+  sleep(0.1)
+  rs.setOutput("left",true)
+  sleep(0.1)
+  rs.setOutput("left",false)
+  rs.setOutput("right",true)
+  sleep(0.1)
+  rs.setOutput("right",false)
+  sleep(0.1)
+  rs.setOutput("right",true)
+  sleep(0.1)
+  rs.setOutput("right",false)
+  rs.setOutput("back",false)
+  sleep(2)
+  rs.setOutput("back",true)
+  sleep(2)
+  count = count + 1
+end

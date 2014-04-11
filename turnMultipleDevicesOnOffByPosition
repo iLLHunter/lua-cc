@@ -1,0 +1,58 @@
+local tArgs = {...}
+ 
+if tArgs[1] == nil then
+	print("Usage: s <spawner corner> <on|off>")
+	print("Front Back Left Right Corners: fr fl br bl")
+	print("Example: s fr on")
+	print("Example: s br off")
+	print("Example: s fl off")
+	print("Example: s bl on")
+        return
+end
+
+side = tArgs[1]
+power = tArgs[2]
+
+if side == "fr" then
+	if power == "on" then
+		rs.setOutput("top", false)
+	end
+end
+if side == "fr" then
+	if power == "off" then
+		rs.setOutput("top", true)
+	end
+end
+
+if side == "fl" then
+	if power == "on" then
+		rs.setOutput("front", false)
+	end
+end
+if side == "fl" then
+	if power == "off" then
+		rs.setOutput("front", true)
+	end
+end
+
+if side == "br" then
+	if power == "on" then
+		rs.setOutput("back", false)
+	end
+end
+if side == "br" then
+	if power == "off" then
+		rs.setOutput("back", true)
+	end
+end
+
+if side == "bl" then
+	if power == "on" then
+		rs.setOutput("left", false)
+	end
+end
+if side == "bl" then
+	if power == "off" then
+		rs.setOutput("left", true)
+	end
+end

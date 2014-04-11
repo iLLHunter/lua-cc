@@ -1,0 +1,17 @@
+local tArgs = {...}
+ 
+if tArgs[1] == nil then
+	print("THIS CAUSES SERIOUS LAG ON SERVER")
+	print("This is here for testing only.")
+        print("If you want to run: runall iamfuckingserious")
+        return
+end
+
+check = tArgs[1]
+
+if check == "iamfuckingserious" then
+	rs.setOutput("front", false)
+	rs.setOutput("back", false)
+	rs.setOutput("left", false)
+	rs.setOutput("top", false)
+end

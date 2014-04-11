@@ -1,0 +1,7 @@
+print("chugar farm")
+while true do
+  rs.setOutput("back", true)
+  sleep(1)
+  rs.setOutput("back",false)
+  sleep(1200)
+end

@@ -1,0 +1,96 @@
+-- Fuel goes in slot one, desired block in slot two
+-- Pass it number of blocks high you want it to build
+-- For now it will build until out of block. Add backstops if needed
+
+function fuel()
+	if turtle.getFuelLevel() < 4 then
+		turtle.select(1)
+		if turtle.refuel(1) then
+			return true
+		end
+		print("Out of fuel.")
+		return false
+	end
+end
+
+function placeBlock()
+	local slot = 2
+	if not turtle.detect() then
+			while turtle.getItemCount(slot) < 1 do
+				slot = slot +1
+			end
+		turtle.select(slot)
+		if turtle.place() then
+			return true
+		end
+		print("Error - Out of blocks?")
+		return false
+	end
+end
+
+function moveUp()
+	if turtle.up() then
+		return true
+	end
+	print("Unable to Move up - Build limit or block in the way?")
+	return false
+end
+
+function moveDown()
+	if turtle.down() then
+		return true
+	end
+	print("Unable to move down - block in the way?")
+	return false
+end
+
+function allTheWayBackDown()
+	while not turtle.detectDown() do
+		fuel()
+		moveDown()
+	end
+end
+
+function moveBack()
+	if turtle.back() then
+		return true
+	end
+	print("Unable to move back - Either job finished or block in the way")
+	return false
+end
+
+local tArgs = {...}
+
+if #tArgs ~= 1 or tonumber(tArgs[1]) == nil or math.floor(tonumber(tArgs[1])) ~= tonumber(tArgs[1]) or tonumber(tArgs[1]) < 1 then
+	print("Usage: pb <number of blocks high>")
+	return
+end
+ 
+height = tonumber(tArgs[1])
+
+function doColumn() 
+	local blocksMoved = 1
+	while blocksMoved < height do
+		fuel()
+  if false then
+    break
+  end  
+		placeBlock()
+		if false then
+    break
+  end  
+  moveUp()
+		blocksMoved = blocksMoved + 1
+	end
+
+	if blocksMoved == height then
+		fuel()
+		placeBlock()
+		allTheWayBackDown()
+	end
+end
+
+while true do
+	doColumn()
+	moveBack()
+end

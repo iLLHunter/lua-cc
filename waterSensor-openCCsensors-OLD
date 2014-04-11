@@ -1,0 +1,14 @@
+os.loadAPI("ocs/apis/sensor")
+local wSensor = sensor.wrap("top")
+while true do
+  sleep(0.1)
+  local signal = false
+  local tank0 = wSensor.getTargetDetails("-2,-3,0")
+  local tank1 = wSensor.getTargetDetails("2,-3,0")
+  local tank0Amount = tank0.Tanks[1].Amount
+  local tank1Amount = tank1.Tanks[1].Amount
+  if (tank0Amount > 12000 and tank1Amount > 12000) then
+    signal = true
+  end
+  rs.setOutput("left", signal)
+end

@@ -1,0 +1,13 @@
+local monitorSide = "back"
+local textScale = 3
+
+if peripheral.isPresent(monitorSide) and peripheral.getType(monitorSide) == "monitor" then
+  local mon = peripheral.wrap(monitorSide)
+  mon.setTextScale(textScale)
+  term.redirect(mon)
+else
+  print("No monitor present.")
+  return
+end
+
+print("Welcome to spawn farms")

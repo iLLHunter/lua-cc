@@ -1,0 +1,60 @@
+os.loadAPI("ocs/apis/sensor")
+local hSensor = sensor.wrap("top")
+while true do
+  sleep(0.1)
+  local signal = false
+  local gin00 = hSensor.getTargetDetails("1,-3,-2")
+  local gin01 = hSensor.getTargetDetails("1,-3,2")
+  local gin02 = hSensor.getTargetDetails("-1,-1,-2")
+  local gin03 = hSensor.getTargetDetails("-1,-1,2")
+  local gin04 = hSensor.getTargetDetails("-1,-2,-2")
+  local gin05 = hSensor.getTargetDetails("-1,-2,2")
+  local gin06 = hSensor.getTargetDetails("-1,-3,-2")
+  local gin07 = hSensor.getTargetDetails("-1,-3,2")
+  local gin08 = hSensor.getTargetDetails("-1,0,-2")
+  local gin09 = hSensor.getTargetDetails("-1,0,2")
+  local gin10 = hSensor.getTargetDetails("-1,1,-2")
+  local gin11 = hSensor.getTargetDetails("-1,1,2")
+  local gin12 = hSensor.getTargetDetails("-1,2,-2")
+  local gin13 = hSensor.getTargetDetails("-1,2,2")
+  local gin14 = hSensor.getTargetDetails("1,-1,-2")
+  local gin15 = hSensor.getTargetDetails("1,-1,2")
+  local gin16 = hSensor.getTargetDetails("1,-2,-2")
+  local gin17 = hSensor.getTargetDetails("1,-2,2")
+  local gin18 = hSensor.getTargetDetails("1,0,-2")
+  local gin19 = hSensor.getTargetDetails("1,0,2")
+  local gin20 = hSensor.getTargetDetails("1,1,-2")
+  local gin21 = hSensor.getTargetDetails("1,1,2")
+  local gin22 = hSensor.getTargetDetails("1,2,-2")
+  local gin23 = hSensor.getTargetDetails("1,2,2")
+
+  local gin00Heat = gin00.Heat
+  local gin01Heat = gin01.Heat
+  local gin02Heat = gin02.Heat
+  local gin03Heat = gin03.Heat
+  local gin04Heat = gin04.Heat
+  local gin05Heat = gin05.Heat
+  local gin06Heat = gin06.Heat
+  local gin07Heat = gin07.Heat
+  local gin08Heat = gin08.Heat
+  local gin09Heat = gin09.Heat
+  local gin10Heat = gin10.Heat
+  local gin11Heat = gin11.Heat
+  local gin12Heat = gin12.Heat
+  local gin13Heat = gin13.Heat
+  local gin14Heat = gin14.Heat
+  local gin15Heat = gin15.Heat
+  local gin16Heat = gin16.Heat
+  local gin17Heat = gin17.Heat
+  local gin18Heat = gin18.Heat
+  local gin19Heat = gin19.Heat
+  local gin20Heat = gin20.Heat
+  local gin21Heat = gin21.Heat
+  local gin22Heat = gin22.Heat
+  local gin23Heat = gin23.Heat
+
+  if (gin00Heat < 68000 and gin01Heat < 68000 and gin02Heat < 68000 and gin03Heat < 68000 and gin04Heat < 68000 and gin05Heat < 68000 and gin06Heat < 68000 and gin07Heat < 68000 and gin08Heat < 68000 and gin09Heat < 68000 and gin10Heat < 68000 and gin11Heat < 68000 and gin12Heat < 68000 and gin13Heat < 68000 and gin14Heat < 68000 and gin15Heat < 68000 and gin16Heat < 68000 and gin17Heat < 68000 and gin18Heat < 68000 and gin19Heat < 68000 and gin20Heat < 68000 and gin21Heat < 68000 and gin22Heat < 68000 and gin23Heat < 68000) then
+    signal = true
+  end
+  rs.setOutput("left", signal)
+end

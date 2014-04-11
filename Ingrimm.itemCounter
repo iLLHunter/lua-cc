@@ -1,0 +1,57 @@
+-- ComputerCraft Item Counter
+--    originally coded by Ingrimmm (theMindCrafters.com)
+--    this spaghetti nightmare comes with no warrantee but it cant
+--    mess anything up so have fun :)
+-- USAGE: uses a (hard-coded, I know, I know) redstone signal on the
+--    right to signal when an item has passed through the system
+ 
+local hMonitor=peripheral.wrap("right")
+local count,count_1,count_2,count_3=0,0,0,0
+local day1, day2, day3=0,0,0
+local days=0
+local total=0
+local activeday=os.day()
+local today=os.day()
+term.redirect(hMonitor)
+
+while true do 
+today=os.day()
+event = os.pullEvent()
+
+if today ~= activeday then
+--store hist
+count_3=count_2
+count_2=count_1
+count_1=count
+day3=day2
+day2=day1
+day1=activeday
+--add to totals
+days=days+1
+--reset for today
+count = 0
+activeday=today
+end
+
+if event=="redstone" and rs.getInput("left") then
+count = count + 1
+total = total + 1
+end
+
+term.clear()
+print("Day: "..today)
+print("Count: " .. count)
+print("Last x counts: ")
+print("   Day "..day1..": "..count_1)
+print("   Day "..day2..": "..count_2)
+print("   Day "..day3..": "..count_3)
+print("Days since reset: "..days)
+print("UU-Matter since reset: "..total)
+
+if event=="redstone" and rs.getInput("back") then
+os.reboot()
+end
+
+end
+term.clear()
+term.restore()
