@@ -1,0 +1,10 @@
+## Sends RS signal to device to only operate from 8:00PM(20:00 = 20.000) to just after 6:00AM (06:06 = 6.100)
+while true do
+ local mctime = os.time()
+ if mctime < 6.100 or mctime > 20.000 then
+   rs.setOutput("back", true)
+ else
+   rs.setOutput("back", false)  
+ end  
+ sleep(0.8)
+end
